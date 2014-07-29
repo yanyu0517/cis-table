@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+<table id="cis-table"></table>
+<script type="text/javascript">
+	SOGOU_BASE_URL  = '';
+</script>
+
+<link href="css/cis-table.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="js/libs/jquery/1.7.1/jquery.js"></script>
+<script type="text/javascript" src="js/libs/hogan/2.0/hogan.js"></script>
+<script type="text/javascript" src="js/libs/plugins/jquery-Mustache.js"></script>
+
+<script type="text/javascript" src="js/libs/backbone/json2.js"></script>
+<script type="text/javascript" src="js/libs/backbone/underscore-1.3.1.js"></script>
+<script type="text/javascript" src="js/libs/backbone/backbone-0.9.1.js"></script>
+
+<script type="text/javascript" src="js/libs/ajaxPage.js"></script>
+
+<script type="text/javascript" src="js/cis-table.js"></script>
+
+<script type="text/javascript">
+	$(function(){
+		function DemoTable(configs){
+			return DemoTable.superclass.constructor.call(this, configs);
+		}
+
+		CIS_Table.extend(DemoTable);
+
+
+		var table =new DemoTable({
+			url: '/report/classic/queryClassicReport.action',
+			table: {
+				container: $('#cis-table'),
+				width: '100%'
+			},
+			thead: {
+				columns: [
+					{
+						key: 'planId',
+						// label: '123',
+						// attrs: 'attrs',
+						// style: 'style:11',
+						// _colspan: 'attr colspan, default 1',
+						// _rowspan: 'attr rowspan, default 1',
+						// title: 'th title, default label or key',
+						width: '50'
+					},
+					{
+						key: 'groupId',
+						width: '80'
+					},
+					{
+						key: 'cpcGrpName',
+						width: '100'
+					},
+					{
+						key: 'cpcPlanName'
+					}
+				],
+				plugins: [//help控件，没有引，所以无法显示，用法如下
+					{
+						cols: ['cpcGrpName', 'cpcPlanName'],
+						position: 'right',
+						content: '<span class="bizHelp" bizid="sogou.help.optimize.optHelpTip"></span>',
+						init: function(th, key){
+							console.log(this.content)
+							console.log(key);
+							console.log(th)
+						}
+					}
+				]
+			}
+			// ,
+			// body: {
+			// 	// cells:{
+			// 	// 	planId: {
+			// 	// 		attrs: 'attrs',
+			// 	// 		style: 'zzzz',
+			// 	// 		emptyTitle: true
+			// 	// 	},
+			// 	// 	cpcPlanName:{
+			// 	// 		emptyTitle: true,
+			// 	// 		unEscape: true
+			// 	// 	}
+			// 	// },
+			// 	tr:{
+			// 		attrs: 'trattrs',
+			// 		style: 'trstyle'
+			// 	}
+				
+			// }
+		});
+		table.query();
+
+	})
+</script>
+
+</body>
+
+</html>

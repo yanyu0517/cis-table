@@ -1,0 +1,5 @@
+.cis-table {background:#DADADA;table-layout:fixed;color:#333333;font-family:Arial;font-size:12px;}
+.cis-table tr td {height:16px;line-height:16px;padding:5px;overflow: hidden;white-space: nowrap;}
+.cis-table tr th {height:16px;line-height:16px;padding:5px;}
+.cis-table-loading{width:209px;height:46px;line-height:46px;position:relative;top:0%;right:0%;z-index:105;border:1px solid #DEDEDE;background:#EDEDED url("../images/loading.gif") no-repeat 5% 15%;text-align:center;margin:0 auto;}
+.cis-table-loading img{margin:0 10px 0 0;vertical-align: middle;}
